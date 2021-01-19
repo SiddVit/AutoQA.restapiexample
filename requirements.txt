@@ -1,0 +1,5 @@
+requests>=2.24.0
+pytest==6.0.2
+PyHamcrest==2.0.2
+loguru~=0.5.3
+pyyaml>=5.3.1
