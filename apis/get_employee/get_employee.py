@@ -1,13 +1,13 @@
 import requests
-from loguru import logger
+import logging
 
-from configs.enviroment import base_url, api_v1
+from configs.settings import BASE_URL, API_V1
 
 
 class GETEmployee(object):
     def __init__(self):
-        self.base_url = base_url()
-        self.v_api = api_v1()
+        self.base_url = BASE_URL
+        self.v_api = API_V1
         self.endpoint = "employee/"
         self.headers = {'Content-Type': 'application/json', 'User-Agent': 'request'}
         self.url = self.base_url + self.v_api + self.endpoint
@@ -18,10 +18,10 @@ class GETEmployee(object):
 
     def get_employee(self, id_record):
         response = requests.request("GET", url=self.url + str(id_record), headers=self.headers)
-        logger.debug("\nRequest get_employee with params:" +
-                     "\nurl: " + str(self.url + str(id_record)) +
-                     "\nheaders: " + str(self.headers) +
-                     "\n" +
-                     "\nResponse code is: " + str(response.status_code) + "\n" +
-                     "\nResponse body is: " + str(response.text) + "\n")
+        logging.warning("\nRequest get_employee with params:" +
+                        "\nurl: " + str(self.url + str(id_record)) +
+                        "\nheaders: " + str(self.headers) +
+                        "\n" +
+                        "\nResponse code is: " + str(response.status_code) + "\n" +
+                        "\nResponse body is: " + str(response.text) + "\n")
         return response
