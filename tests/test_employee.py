@@ -30,27 +30,34 @@ def test_status_code_response_create(setup_create):
 
 
 def test_correct_status_response_create(setup_create):
-    assert setup_create.json().get("status") == "success", "Status in response body isn't success"
+    assert setup_create.json().get("status") == "success", \
+        "Status in response body isn't success"
 
 
 def test_correct_message_response_create(setup_create):
-    assert setup_create.json().get("message") == "Successfully! Record has been added.", "Message in response body isn't correct"
+    assert setup_create.json().get(
+        "message") == "Successfully! Record has been added.", \
+        "Message in response body isn't correct"
 
 
 def test_correct_name_response_create(setup_create, param_test):
-    assert setup_create.json()["data"].get("name") == param_test["name"], "Name in response body isn't correct"
+    assert setup_create.json()["data"].get("name") == param_test["name"], \
+        "Name in response body isn't correct"
 
 
 def test_correct_salary_response_create(setup_create, param_test):
-    assert setup_create.json()["data"].get("salary") == param_test["salary"], "salary in response body isn't correct"
+    assert setup_create.json()["data"].get("salary") == param_test["salary"], \
+        "salary in response body isn't correct"
 
 
 def test_correct_age_response_create(setup_create, param_test):
-    assert setup_create.json()["data"].get("age") == param_test["age"], "age in response body isn't correct"
+    assert setup_create.json()["data"].get("age") == param_test["age"], \
+        "age in response body isn't correct"
 
 
 def test_id_response_create(setup_create):
-    assert re.match("[0-9]{4}", str(setup_create.json()["data"].get("id"))), "Id in response body isn't correct"
+    assert re.match("[0-9]{4}", str(setup_create.json()["data"].get("id"))), \
+        "Id in response body isn't correct"
 
 
 def test_response_speed_response_create(setup_create):
@@ -62,32 +69,46 @@ def test_status_code_response_get_employee(setup_get_employee):
 
 
 def test_correct_status_response_get_employee(setup_get_employee):
-    assert setup_get_employee.json().get("status") == "success", "Status in response body isn't success"
+    assert setup_get_employee.json().get("status") == "success", \
+        "Status in response body isn't success"
 
 
 def test_correct_message_response_get_employee(setup_get_employee):
-    assert setup_get_employee.json().get("message") == "Successfully! Record has been fetched.", "Message in response body isn't correct"
+    assert setup_get_employee.json().get(
+        "message") == "Successfully! Record has been fetched.", \
+        "Message in response body isn't correct"
 
 
 def test_correct_id_response_get_employee(setup_get_employee, setup_create):
-    assert setup_get_employee.json()["data"].get("id") == setup_create.json()["data"].get("id"), "Id in response body isn't correct"
+    assert setup_get_employee.json()["data"].get("id") == setup_create.json()[
+        "data"].get("id"), \
+        "Id in response body isn't correct"
 
 
 def test_correct_name_response_get_employee(setup_get_employee, param_test):
-    assert setup_get_employee.json()["data"].get("employee_name") == param_test["name"], "employee_name in response body isn't correct"
+    assert setup_get_employee.json()["data"].get("employee_name") == \
+           param_test["name"], \
+        "employee_name in response body isn't correct"
 
 
 def test_correct_salary_response_get_employee(setup_get_employee, param_test):
-    assert setup_get_employee.json()["data"].get("employee_salary") == param_test["salary"], "employee_salary in response body isn't correct"
+    assert setup_get_employee.json()["data"].get("employee_salary") == \
+           param_test["salary"], \
+        "employee_salary in response body isn't correct"
 
 
 def test_correct_age_response_get_employee(setup_get_employee, param_test):
-    assert setup_get_employee.json()["data"].get("employee_age") == param_test["employee_age"], "employee_age in response body isn't correct"
+    assert setup_get_employee.json()["data"].get("employee_age") == param_test[
+        "employee_age"], \
+        "employee_age in response body isn't correct"
 
 
 def test_correct_profile_response_get_employee(setup_get_employee, param_test):
-    assert setup_get_employee.json()["data"].get("profile_image") == param_test["profile_image"], "profile_image in response body isn't correct"
+    assert setup_get_employee.json()["data"].get("profile_image") == \
+           param_test["profile_image"], \
+        "profile_image in response body isn't correct"
 
 
 def test_response_speed_response_get_employee(setup_get_employee, param_test):
-    assert setup_get_employee.elapsed.seconds < 2, "Response answer is too slow"
+    assert setup_get_employee.elapsed.seconds < 2, \
+        "Response answer is too slow"
